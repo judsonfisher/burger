@@ -6,15 +6,11 @@ var burger = {
 			cb(res);
 		})
 	},
-	insert: function(cols, vals, cb) {
-		orm.insertOne("burgers", cols, vals, function(res) {
-			cb(res);
-		});
+	insert: function(name, cb) {
+		orm.insertOne("burgers", name, cb);
 	},
-	update: function(objColVals, condition, cb) {
-		orm.updateOne("burgers", objColVals, condition, function(res) {
-			cb(res);
-		});
+	update: function(id, cb) {
+		orm.updateOne("burgers", id, cb);
 	}
 };
 
