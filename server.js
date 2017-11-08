@@ -6,7 +6,7 @@ var exphbs = require('express-handlebars');
 var app = express();
 app.use(express.static(__dirname + "/public"));
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
