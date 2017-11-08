@@ -8,17 +8,50 @@
 </head>
 <body>
 	<img src="assets/img/if_Burger_653249.png">
-	<h2 class="centered-text">Eat-Da-Burger!</h2>
-
-
-
-	<form class="create-form">
-		<div class="form-group">
-		<label for="ca">Enter a Burger</label>
-		<input type="text" id="ca" name="name">
+<div class="container">
+	<div class="row">
+		<div>
+			<h1>Eat Da Burger!</h1>
 		</div>
-		<button type="submit">Submit</button>
-	</form>
+	</div>
+	<div>
+		<div class="row">
+			{{#each data}}
+				{{#unless this.devoured}}
+				<div>
+					<h3>{{this.id}}. {{burger_name}}<h3>
+				</div>	
+				<div>
+					<form method="POST" action="/burgers/update?_method=PUT" class="button-size">
+					<input type="hidden" name="burged_id" type="text" value={{this.id}}>
+					<br>
+					<button type="submit" class="btn btn-default">Devour It!</button>
+					</form> 	
+				</div>
+				{{/unless}}
+				{{/each}}
+		</div>
+		<div>
+			{{#each data}}
+				{{#if this.devoured}}
+					<input class="form-control" type="text" placeholder="{{this.id}}. {{this.burger_name}}" readonly>
+				{{/if}}	
+			{{/each}}	
+		</div>
+	</div>	
+</div>
+
+<div class="container">
+	<div class="row">
+		<div>
+			<form action="/burgers/insert" method="POST">
+				<input type="text" name="burger_name" class="form-control" value="" id="createdName">
+				<button type="submit" class="btn btn-primary" id="submitBurger">SUBMIT</button>
+			</form>
+			<p>What burger woudld you like to eat?</div>	
+		</div>
+	</div>
+</div>	
 
 
 

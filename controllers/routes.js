@@ -5,18 +5,18 @@ var burger = require('../models/burger.js');
 
 router.get('/', function(req, res) {
 	burger.all(function(data) {
-		res.render('index');
-	});
-});
-
-router.put('/burgers/update', function(req,res) {
-	burger.update(req.body.burger_id, function(result) {
-		res.redirect('/');
+		res.render('index', {data});
 	});
 });
 
 router.post('/burgers/insert', function(req, res) {
-	burger.insert(req.body.burger_name, function(result) {
+	burger.insert(req.body.burger_name, function(data) {
+		res.redirect('/');
+	});
+});
+
+router.put('/burgers/update', function(req,res) {
+	burger.update(req.body.id, function(data) {
 		res.redirect('/');
 	});
 });

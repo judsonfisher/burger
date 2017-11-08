@@ -23,8 +23,8 @@ var orm = {
 		});
 	},
 
-	updateOne: function(table, condition, cb) {
-		var queryString = "UPDATE " + table + " SET devoured=true WHERE id=" + condition + ';'; 
+	updateOne: function(table, id, cb) {
+		var queryString = "UPDATE " + table + " SET devoured=true WHERE id=" + id + ';'; 
 		connection.query(queryString, function(err, result) {
 			if (err) {
 				throw err;
